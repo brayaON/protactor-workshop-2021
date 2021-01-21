@@ -24,7 +24,9 @@
     "url": "https://github.com/brayaON/protactor-workshop-2021/issues"
   },
   "homepage": "https://github.com/brayaON/protactor-workshop-2021#readme",
-  "dependencies": {},
+  "dependencies": {
+    "jasmine-spec-reporter": "^6.0.0"
+  },
   "devDependencies": {
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "^14.14.22",
