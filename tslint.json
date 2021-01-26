@@ -1,0 +1,9 @@
+{
+  "defaultServerity": "error",
+  "extends": [
+    "tslint-config-airbnb"
+  ],
+  "rules": {
+    "trailing-comma": [true]
+  }
+}
