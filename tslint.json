@@ -1,5 +1,5 @@
 {
-  "defaultServerity": "error",
+  "defaultSeverity": "error",
   "extends": [
     "tslint-config-airbnb"
   ],
