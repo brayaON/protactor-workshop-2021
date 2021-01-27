@@ -1,6 +1,20 @@
 import { $, browser } from 'protractor';
+import { MenuContentPage, ProductAddedModalPage, SummaryStepPage,
+  SignInStepPage, AddressStepPage, ShippingStepPage, OrderSummaryPage, ProductListPage,
+  PaymentStepPage, BankPaymentPage } from '../src/page/';
 
 describe('Buy a t-shirt', () => {
+  const menuContentPage: MenuContentPage = new MenuContentPage();
+  const addressPage: AddressStepPage = new AddressStepPage();
+  const productAddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
+  const summaryStepPage: SummaryStepPage = new SummaryStepPage();
+  const signInStepPage: SignInStepPage = new SignInStepPage();
+  const shippingStepPage: ShippingStepPage = new ShippingStepPage();
+  const orderSummaryPage: OrderSummaryPage = new OrderSummaryPage();
+  const productListPage: ProductListPage = new ProductListPage();
+  const paymentStepPage: PaymentStepPage = new PaymentStepPage();
+  const bankPaymentPage: BankPaymentPage = new BankPaymentPage();
+
   beforeEach(() => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
   });
@@ -8,31 +22,37 @@ describe('Buy a t-shirt', () => {
   it('thin should be bought a t-shirt', async () => {
     await browser.get('http://automationpractice.com/');
     await(browser.sleep(1000));
-    await $('#block_top_menu > ul > li:nth-child(3) > a').click();
+
+    menuContentPage.goToTShirtMenu();
     await(browser.sleep(1000));
-    await $('#center_column a.button.ajax_add_to_cart_button.btn.btn-default').click();
-    await(browser.sleep(1000));
-    await $('[style*="display: block;"] .button-container > a').click();
-    await(browser.sleep(1000));
-    await $('.cart_navigation span').click();
-    await(browser.sleep(1000));
+
+    productListPage.goToProductAddedModal();
+    await(browser.sleep(5000));
+
+    productAddedModalPage.goToSummaryStep();
+    await(browser.sleep(5000));
+
+    summaryStepPage.goToSignInStep();
+    await(browser.sleep(5000));
 
     await $('#email').sendKeys('aperdomobo@gmail.com');
     await $('#passwd').sendKeys('WorkshopProtractor');
-    await $('#SubmitLogin > span').click();
-    await(browser.sleep(1000));
+    signInStepPage.goToAddressMenu();
+    await(browser.sleep(5000));
 
-    await $('#center_column > form > p > button > span').click();
-    await(browser.sleep(1000));
+    addressPage.goToShippingStep();
+    await(browser.sleep(5000));
 
-    await $('#cgv').click();
-    await(browser.sleep(1000));
+    shippingStepPage.goToSummaryMenu();
+    await(browser.sleep(5000));
 
-    await $('#form > p > button > span').click();
-    await(browser.sleep(1000));
-    await $('#HOOK_PAYMENT > div:nth-child(1) > div > p > a').click();
-    await(browser.sleep(1000));
-    await $('#cart_navigation > button > span').click();
+    orderSummaryPage.goToPaymentStep();
+    await(browser.sleep(5000));
+
+    paymentStepPage.goToBankPaymentStep();
+    await(browser.sleep(5000));
+
+    bankPaymentPage.goToFinishedPayment();
     await(browser.sleep(1000));
 
     await expect($('#center_column > div > p > strong').getText())
