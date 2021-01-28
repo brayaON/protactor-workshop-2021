@@ -17,39 +17,29 @@ describe('Buy a t-shirt', () => {
 
   it('thin should be bought a t-shirt', async () => {
     await browser.get('http://automationpractice.com/');
-    await(browser.sleep(1000));
 
-    menuContentPage.goToTShirtMenu();
-    await(browser.sleep(1000));
+    await menuContentPage.goToTShirtMenu();
 
-    productListPage.goToProductAddedModal();
-    await(browser.sleep(5000));
+    await productListPage.waitGoToProductAddedModal();
+    await productListPage.goToProductAddedModal();
 
-    productAddedModalPage.goToSummaryStep();
-    await(browser.sleep(5000));
+    await productAddedModalPage.waitGoToSummaryStep();
+    await productAddedModalPage.goToSummaryStep();
 
-    summaryStepPage.goToSignInStep();
-    await(browser.sleep(5000));
+    await summaryStepPage.goToSignInStep();
 
-    await $('#email').sendKeys('aperdomobo@gmail.com');
-    await $('#passwd').sendKeys('WorkshopProtractor');
-    signInStepPage.goToAddressMenu();
-    await(browser.sleep(5000));
+    await signInStepPage.fillEmail();
+    await signInStepPage.fillPass();
+    await signInStepPage.goToAddressMenu();
 
-    addressPage.goToShippingStep();
-    await(browser.sleep(5000));
+    await addressPage.goToShippingStep();
 
-    shippingStepPage.goToSummaryMenu();
-    await(browser.sleep(5000));
+    await shippingStepPage.goToSummaryMenu();
 
-    orderSummaryPage.goToPaymentStep();
-    await(browser.sleep(5000));
+    await orderSummaryPage.goToPaymentStep();
 
-    paymentStepPage.goToBankPaymentStep();
-    await(browser.sleep(5000));
-
-    bankPaymentPage.goToFinishedPayment();
-    await(browser.sleep(1000));
+    await paymentStepPage.goToBankPaymentStep();
+    await bankPaymentPage.goToFinishedPayment();
 
     await expect($('#center_column > div > p > strong').getText())
       .toBe('Your order on My Store is complete.');

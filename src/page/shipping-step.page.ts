@@ -1,4 +1,4 @@
-import { $, ElementFinder } from 'protractor';
+import { $, browser, ElementFinder, ExpectedConditions } from 'protractor';
 
 export class ShippingStepPage {
   private summaryMenu: ElementFinder;
@@ -8,6 +8,10 @@ export class ShippingStepPage {
   }
 
   public async goToSummaryMenu() : Promise<void> {
-    return this.summaryMenu.click();
+    await this.summaryMenu.click();
+  }
+
+  public async waitGoToSummaryMenu() : Promise<void> {
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.summaryMenu), 4000);
   }
 }

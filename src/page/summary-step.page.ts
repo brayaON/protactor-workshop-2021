@@ -1,4 +1,4 @@
-import { $, ElementFinder } from 'protractor';
+import { $, browser, ElementFinder, ExpectedConditions } from 'protractor';
 
 export class SummaryStepPage {
   private signInStep: ElementFinder;
@@ -8,6 +8,10 @@ export class SummaryStepPage {
   }
 
   public async goToSignInStep() : Promise<void> {
-    return this.signInStep.click();
+    await this.signInStep.click();
+  }
+
+  public async waitGoToSignInStep() : Promise<void> {
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.signInStep), 10000);
   }
 }

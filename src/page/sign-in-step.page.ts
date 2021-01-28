@@ -1,4 +1,4 @@
-import { $, ElementFinder } from 'protractor';
+import { $, browser, ElementFinder, ExpectedConditions } from 'protractor';
 
 export class SignInStepPage {
   private addressMenu: ElementFinder;
@@ -7,10 +7,16 @@ export class SignInStepPage {
 
   constructor() {
     this.addressMenu = $('#SubmitLogin > span');
+    this.emailData = $('#email');
+    this.passData = $('#passwd');
   }
 
   public async goToAddressMenu(): Promise<void> {
-    this.addressMenu.click();
+    await this.addressMenu.click();
+  }
+
+  public async waitGoToAddressMenu(): Promise<void> {
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.addressMenu), 4000);
   }
 
   public async fillEmail() : Promise<void> {
