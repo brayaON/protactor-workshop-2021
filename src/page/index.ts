@@ -8,3 +8,4 @@ export { OrderSummaryPage } from './order-summary.page';
 export { ProductListPage } from './product-list.page';
 export { PaymentStepPage } from './payment-step.page';
 export { BankPaymentPage } from './bank-payment.page';
+export { PersonalInformationPage } from './personal-information.page'

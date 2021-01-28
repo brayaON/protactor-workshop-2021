@@ -1,12 +1,12 @@
-import { $, $$, browser, ElementFinder, ExpectedConditions } from 'protractor';
+import { $, browser, ElementFinder, ExpectedConditions } from 'protractor';
 
 export class ProductListPage {
   private productAdded: ElementFinder;
-  private products;
+  // private products;
 
   constructor() {
     this.productAdded = $('#center_column a.button.ajax_add_to_cart_button.btn.btn-default');
-    this.products = $('#block_top_menu li');
+    // this.products = $('#block_top_menu li');
   }
 
   public async goToProductAddedModal() : Promise<void> {
@@ -17,6 +17,7 @@ export class ProductListPage {
     return await browser.wait(ExpectedConditions.elementToBeClickable(this.productAdded), 4000);
   }
 
+  /*
   private findByProduct(productName) {
     $$('#block_top_menu li').filter(async (elem) => {
       return elem.getText().then((text) => {
@@ -24,4 +25,5 @@ export class ProductListPage {
       });
     }).first().click();
   }
+  */
 }

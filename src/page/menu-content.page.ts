@@ -1,4 +1,4 @@
-import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';
+import { $, ElementFinder, browser, ExpectedConditions } from 'protractor';;
 
 export class MenuContentPage {
   private tShirtMenu: ElementFinder;
