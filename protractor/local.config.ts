@@ -13,5 +13,10 @@ export const config: Config = {
     browser.manage().timeouts().implicitlyWait(0);
     browser.ignoreSynchronization = true;
     reporter();
-  }
+    const { AwesomeReport } = require('jasmine-awesome-report');
+    jasmine.getEnv().addReporter(AwesomeReport.getReport(config));
+  },
+  fullPath: 'reports',
+  fileName: 'awesome',
+  merge: true
 };
